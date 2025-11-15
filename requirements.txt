@@ -1,0 +1,9 @@
+djangorestframework
+drf-yasg
+gunicorn
+psycopg2-binary
+dotenv
+dj-database-url
+django-cors-headers
+gunicorn
+whitenoise
