@@ -22,7 +22,7 @@ class ProvinciaListCreateView(
 # GET(id) + PATCH
 class ProvinciaDetailView(
     mixins.RetrieveModelMixin,
-    mixins.UpdateModelMixin,   # PATCH y PUT, pero vamos a bloquear PUT
+    mixins.UpdateModelMixin, 
     generics.GenericAPIView
 ):
     queryset = Provincia.objects.all()

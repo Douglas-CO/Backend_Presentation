@@ -8,7 +8,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = urlparse(os.getenv("SECRET_KEY"))
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = "usuarios.Usuario"
@@ -123,3 +123,4 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_ORIGINS  = True
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_URL = "/static/"
