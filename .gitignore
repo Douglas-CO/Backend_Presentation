@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+*.egg
+
+# Virtual environment (si usas venv)
+venv/
+env/
+ENV/
+.venv/
+
+# Django
+db.sqlite3
+staticfiles/
+media/
+
+# Compiled files
+*.log
+*.pot
+
+# VSCode
+.vscode/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Cache
+*.cache
+.cache/
+
+# Docker
+*.pid
+
+# MacOS
+.DS_Store
