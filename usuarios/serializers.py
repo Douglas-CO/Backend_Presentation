@@ -29,6 +29,7 @@ class UsuarioSerializer(serializers.ModelSerializer):
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField(write_only=True)
+    force = serializers.BooleanField(required=False, default=False)
 
     def validate(self, attrs):
         username = attrs.get("username")
@@ -38,7 +39,9 @@ class LoginSerializer(serializers.Serializer):
         if not user:
             raise serializers.ValidationError("Usuario o contraseña incorrectos")
 
-        return {"user": user} 
+        attrs["user"] = user
+        return attrs
+
 
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True)

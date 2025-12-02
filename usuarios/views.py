@@ -47,11 +47,23 @@ class LoginView(APIView):
         serializer.is_valid(raise_exception=True)
 
         user = serializer.validated_data["user"]
+        force = serializer.validated_data.get("force", False)
+
+        existing_tokens = Token.objects.filter(user=user)
+        if existing_tokens.exists() and not force:
+            return Response(
+                {
+                    "detail": "El usuario ya tiene una sesión activa en otro navegador.",
+                    "need_force": True
+                },
+                status=400
+            )
+        if force:
+            existing_tokens.delete()
         token, _ = Token.objects.get_or_create(user=user)
-
         user_data = UsuarioSerializer(user).data
-
         return Response({
             "token": token.key,
             "user": user_data
         })
+
