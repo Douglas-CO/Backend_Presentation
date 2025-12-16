@@ -30,6 +30,4 @@ urlpatterns = [
 
     # Tus endpoints de la app
     path("auth/", include("usuarios.urls")),
-    path('pais/', include('pais.urls')), 
-    path("provincia/", include("provincia.urls")),
 ]
