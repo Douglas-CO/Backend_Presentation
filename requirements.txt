@@ -7,6 +7,7 @@ dj-database-url
 django-cors-headers
 gunicorn
 whitenoise
+Django==4.0.2
 django-filter
 django_tenants
 django-cacheops==6.2
@@ -18,3 +19,16 @@ weasyprint==58.0
 dependency_injector
 django-environ==0.10.0
 pika==1.3.2
+django-cors-headers==4.4.0
+python-json-logger==3.3.0
+prometheus_client==0.21.1
+django-prometheus==2.3.1
+django-widget-tweaks==1.4.12
+django-user-agents==0.4.0
+user-agents==2.2.0
+django-cacheops==6.2
+django-cleanup==7.0.0
+django-encrypted-model-fields==0.6.5
+pyotp==2.9.0
+elasticsearch==8.13.0
+qrcode==8.2
