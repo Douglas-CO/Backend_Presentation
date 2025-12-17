@@ -191,13 +191,6 @@ class FindServiceMixin:
         return instance
 
 
-# class CreateServiceMixin:
-#     def create_mx(self, data):
-#         validated_data = self.validate_and_serialize(data)
-#         model_instance = self.repository.create(validated_data)
-#         return self.serialize(model_instance)
-
-
 class CreateServiceInstanceMixin:
     def create_mx_i(self, data):
         validated_data = self.validate_and_serialize(data)
@@ -370,6 +363,7 @@ class FindServiceSalesFilterMixin:
             if flota_user:
                 queryset = queryset.filter(usuario_flota=flota_user)
         return queryset
+
 
 class UpdateServiceSalesMixin:
     pre_instance = None
@@ -596,4 +590,3 @@ class UpdateServiceGenericUserMixinOld:
 
         updated_i = self.repository.update(pk, validated_data)
         return self.serialize(updated_i)
-

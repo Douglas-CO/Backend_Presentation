@@ -75,4 +75,3 @@ def _ensure_channel():
         if _PUBLISH_CONFIRMS:
             _channel.confirm_delivery()
         return _channel
-

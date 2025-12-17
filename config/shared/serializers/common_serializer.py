@@ -1,4 +1,3 @@
-from core.multicpy.models import Company
 from rest_framework import serializers
 
 from config.shared.serializers.serializers import OptionalFieldsModelSerializer
@@ -7,7 +6,6 @@ from config.shared.exceptions.invalid_fields_exception import InvalidFieldsExcep
 
 class CompanyLimitResponseSerializer(OptionalFieldsModelSerializer):
     class Meta:
-        model = Company
         fields = [
             'uuid', 'id', 'company_name', 'commercial_name', 'logo_1_url', 'logo_2_url', 'schema_name', 'email', 'main_address', 'establishment_address', 'mobile', 'phone'
         ]

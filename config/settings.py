@@ -29,7 +29,6 @@ MFA_ISSUER = "S360 ERP"
 
 SHARED_APPS = [
     'django_prometheus',
-    'django_tenants',
     'widget_tweaks',
     'django_user_agents',
     'cacheops',
@@ -48,7 +47,6 @@ SHARED_APPS = [
     'core.multicpy',
     'core.security',
     'core.user',
-
 
     'users',
 ]
@@ -76,21 +74,22 @@ TENANT_APPS = [
 
     # own django apps
     'users',
+    'log',
 ]
 
 # INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
 INSTALLED_APPS = [
-    'django_tenants', 'widget_tweaks', 'django_user_agents', 'cacheops', 'rest_framework', 'rest_framework.authtoken', 'django_cleanup.apps.CleanupConfig', 'django.contrib.staticfiles', 'django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes', 'django.contrib.sessions', 'django.contrib.messages', 'core.homepage', 'core.multicpy', 'core.security', 'core.user', 'core.billing', 'core.dashboard', 'core.login', 'core.network',
+    'widget_tweaks', 'django_user_agents', 'cacheops', 'rest_framework', 'rest_framework.authtoken', 'django_cleanup.apps.CleanupConfig', 'django.contrib.staticfiles', 'django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes', 'django.contrib.sessions', 'django.contrib.messages', 'core.homepage', 'core.multicpy', 'core.security', 'core.user', 'core.billing', 'core.dashboard', 'core.login', 'core.network',
     # 'django_crontab',
     # swagger
     'encrypted_model_fields',
     'drf_yasg',
     'users',
+    'log',
 ]
 
 MIDDLEWARE = [
-    'django_tenants.middleware.main.TenantMainMiddleware',
-    'core.multicpy.middleware.CustomTenantMiddleware',
+    'core.multicpy.middleware.CustomMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
 
@@ -126,7 +125,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'core.security.context_processors.site_settings'
             ],
         },
     },
@@ -153,7 +151,13 @@ def get_db_config(environ_var='DATABASE_URL'):
 
 
 db_config = get_db_config()
-db_config['ENGINE'] = 'django_tenants.postgresql_backend'
+# Quita la línea del backend de django_tenants
+# db_config['ENGINE'] = 'django_tenants.postgresql_backend'
+
+# Si tu DATABASE_URL ya contiene el ENGINE correcto, no hace falta cambiarlo
+# Por ejemplo, para PostgreSQL normal:
+db_config['ENGINE'] = 'django.db.backends.postgresql'
+
 
 tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
 DATABASES = {
@@ -168,16 +172,16 @@ DATABASES = {
     }
 }
 
-DATABASE_ROUTERS = [
-    'django_tenants.routers.TenantSyncRouter',
-    'core.network.utils.db_routers.Router',
-]
+# DATABASE_ROUTERS = [
+#    'django_tenants.routers.TenantSyncRouter',
+#    'core.network.utils.db_routers.Router',
+# ]
 
 # Django-tenant-schemas
 
-TENANT_MODEL = 'multicpy.Scheme'
+# TENANT_MODEL = 'multicpy.Scheme'
 
-TENANT_DOMAIN_MODEL = 'multicpy.Domain'
+# TENANT_DOMAIN_MODEL = 'multicpy.Domain'
 
 AUTH_PASSWORD_VALIDATORS = [
     {

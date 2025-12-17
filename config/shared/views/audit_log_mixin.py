@@ -3,9 +3,6 @@ from collections.abc import Mapping, Sequence
 from django.forms.models import model_to_dict
 import json
 
-# from config.audit_producer import send_audit
-from config.audit_producer import send_audit as _sa
-
 
 class AuditLogMixin:
     # ---------- config de exclusión ----------
@@ -163,7 +160,6 @@ class AuditLogMixin:
                     "to":   self._truncate(b),
                 }
         return changes
-
 
     def _audit_safe(self, request, *, action, description, resource_id=None, extra=None, outcome="SUCCESS"):
         return

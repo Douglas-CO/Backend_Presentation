@@ -1,6 +1,5 @@
 from django_tenants.utils import schema_context, get_tenant_model
 from django.db import connection
-from core.multicpy.models import Company
 
 
 class MultitenantStaticHelper:
@@ -12,7 +11,7 @@ class MultitenantStaticHelper:
     @staticmethod
     def get_current_company():
         schema_name = MultitenantStaticHelper.get_current_schema()
-        return Company.objects.get(schema_name=schema_name)
+        return print(schema_name=schema_name)
 
     # ---------------------------------
     @staticmethod

@@ -1,0 +1,187 @@
+.author {
+    text-decoration: none !important;
+}
+
+.img-sm {
+    max-width: 30px;
+    margin-right: 10px;
+}
+
+.form-control-checkbox {
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+}
+
+.dropdown-menu-lg {
+    max-width: 300px;
+    min-width: 280px;
+    padding: 0;
+    font-size: 0.90rem;
+}
+
+.dropdown-menu-lg .dropdown-item {
+    cursor: pointer;
+}
+
+.breadcrumb {
+    background-color: #f7f7f7;
+    padding: 0.75rem 1rem;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid #dbd7d7;
+}
+
+.breadcrumb a {
+    color: #212529 !important;
+}
+
+.dataTables_scroll {
+    overflow: auto;
+}
+
+.loading {
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    position: absolute;
+    top: 36%;
+    width: 100%;
+}
+
+.info-box {
+    border-radius: 0.25rem;
+    position: relative;
+    display: flex;
+    width: 100%;
+    min-height: 80px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    background-color: #fff;
+}
+
+.info-box .info-box-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    font-size: 1.875rem;
+    text-align: center;
+    border-radius: 0.25rem;
+    color: white;
+}
+
+.info-box .info-box-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10px;
+    line-height: 1.8;
+}
+
+.info-box .info-box-text {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.info-box .info-box-number {
+    display: block;
+    margin-top: 0.25rem;
+    font-weight: normal;
+}
+
+.result {
+    background-color: #2C001E;
+    color: #ffffff;
+    height: 500px;
+    overflow-y: auto;
+    padding: 1rem !important;
+    font-size: 15px;
+}
+
+.btn-flat {
+    border-radius: 0 !important;
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+    text-decoration: none !important;
+}
+
+.select2-container--bootstrap-5 .select2-selection--multiple .select2-search {
+    width: 0 !important;
+}
+
+.select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__rendered .select2-selection__choice {
+    margin-bottom: 0 !important;
+    font-size: 0.90rem !important;
+}
+
+.table thead tr th {
+    background-color: #eee !important;
+    color: #000000 !important;
+}
+
+table.table.dataTable > tbody > tr.selected > * {
+    box-shadow: inset 0 0 0 9999px rgb(0 0 0) !important;
+}
+
+.card-widget {
+    border: 0;
+    position: relative;
+}
+
+.widget-user-2 .widget-user-header {
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    padding: 1rem;
+}
+
+.widget-user-2 .widget-user-desc, .widget-user-2 .widget-user-username {
+    margin-left: 80px;
+    color: white;
+}
+
+.widget-user-2 .widget-user-desc {
+    margin-top: 0;
+}
+
+.widget-user-2 .widget-user-image > img {
+    float: left;
+    height: auto;
+    width: 70px;
+}
+
+.card-widget .list-group {
+    border-radius: 0 !important;
+}
+
+.card-widget .card-footer {
+    border-top: 0 !important;
+}
+
+.bg-none {
+    background-color: white !important;
+}
+
+@media (max-width: 767px) {
+    table.table.dataTable > tbody > tr > td .input-group {
+        width: 200px !important;
+    }
+}
+
+.img-ont-model {
+    width: 100%;
+    min-height: 460px;
+    max-height: 460px;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+}

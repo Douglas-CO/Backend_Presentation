@@ -21,8 +21,6 @@ from config.shared.constants.constants import (
 )
 from users.shared.constants.system_modules import system_modules_sidenav
 
-from config.shared.services.common.multitenant_static_helper import MultitenantStaticHelper
-
 from webhooks.services.auditoria_log_service import ESLogService
 
 from types import SimpleNamespace
@@ -47,11 +45,9 @@ class AuthService():
     user_serializer = UserResponseSerializer
     permission_serializer = PermissionSerializer
 
-    def __init__(self, repository, auth_repository, multitenant_service, flota_repository):
-        self.repository = repository  # DI
-        self.auth_repository = auth_repository  # DI
-        self.multitenant_service = multitenant_service  # DI
-        self.flota_repository = flota_repository  # DI
+    def __init__(self, repository, auth_repository):
+        self.repository = repository
+        self.auth_repository = auth_repository
 
     def login(self, data, ip: str, os: str, request=None):
         user = self.repository.find_one_by_attr(
@@ -204,20 +200,16 @@ class AuthService():
                     group.id)
                 system_modules += group_modules
 
-        # company
-        company = self.multitenant_service.get_current_company()
-        company_serializer = self.company_serializer(company)
+        # company: usar valor fijo o eliminar si no es necesario
+        company_serializer = {"name": "Default Company"}
 
         # flota
         fleet_i = self.flota_repository.find_one_by_attrs({'user_id': user.id})
 
-        # payload igual al login normal
         return {
-            # el front luego separa permissions
             "user": self.user_serializer(user).data,
             "system_modules": list(set(system_modules)),
-            "company_data": company_serializer.data,
-            # opcional si quieres devolverlo explícito
+            "company_data": company_serializer,  # ahora es un dict simple
             "permissions": user.permissions,
         }
 
@@ -242,8 +234,7 @@ class AuthService():
                             "HTTP_X_FORWARDED_FOR": ip,
                             "HTTP_USER_AGENT": ua or "",
                         }
-                        schema = MultitenantStaticHelper.get_current_schema()
-                        self.tenant = SimpleNamespace(schema_name=schema)
+                        self.tenant = SimpleNamespace(schema_name="default")
 
                     def get_full_path(self): return self._path
                     @property
@@ -264,9 +255,6 @@ class AuthService():
                     req.get_full_path = lambda: "/auth/login"
                 if not hasattr(req, "path"):
                     req.path = "/auth/login"
-                if not hasattr(req, "tenant"):
-                    schema = MultitenantStaticHelper.get_current_schema()
-                    req.tenant = SimpleNamespace(schema_name=schema)
 
             # --- payload (lo demás lo completa build_audit_payload) ---
             no_user_log_es = ['consulta_externa2']

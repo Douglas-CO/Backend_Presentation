@@ -6,10 +6,10 @@ from config.shared.exceptions.resource_not_found_exception import ResourceNotFou
 from config.shared.utils.common_utils import humanize_model_name, format_params
 
 # ## Service Mixins -----------------------
-from config.shared.services.base_mixins_service import PaginationServiceMixin, SerializationServiceMixin, FindServiceMixin, CreateServiceMixin, UpdateServiceMixin, DeleteServiceMixin, FindServiceSalesFilterMixin, CreateServiceSalesMixin, UpdateServiceSalesMixin, FindServiceGenericUserFilterMixin, CreateServiceInstanceGenericUserMixin, CreateServiceInstanceGenericUserNoUserMixin, CreateServiceInstanceMixin, CreateServiceGenericUserMixin, CreateServiceGenericUserInstancePropInstanceMixin, UpdateServiceGenericUserMixin, UpdateServiceGenericUserInstancePropMixin
+from config.shared.services.base_mixins_service import PaginationServiceMixin, SerializationServiceMixin, FindServiceMixin, UpdateServiceMixin, CreateServiceInstanceMixin
 
 
-class BaseServiceMixin(PaginationServiceMixin, SerializationServiceMixin, FindServiceMixin, CreateServiceMixin, CreateServiceInstanceMixin, UpdateServiceMixin):
+class BaseServiceMixin(PaginationServiceMixin, SerializationServiceMixin, FindServiceMixin, CreateServiceInstanceMixin, UpdateServiceMixin):
     # DI: inject the repository | other just args
     def __init__(self, repository, filter=None, serializer=None, serializer2=None, serializer_upd=None):
         self.repository = repository
